@@ -1,0 +1,25 @@
+programa
+
+  numero a, b;
+  texto  t1;
+  t1 := "ab";
+  leia(a);
+  leia(b);
+  
+  a := 1 + 2 * 3 / b;
+  escreva(a);
+
+  se ( a > b )
+  entao {
+     escreva (a);
+  }
+  senao {
+     escreva (b);
+  }
+  enquanto( a > b){
+  	a := a + b;
+  	t1 := "abcd";
+  }
+  escreva(a);
+  escreva(t1);
+fimprog;
