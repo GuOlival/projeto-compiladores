@@ -170,19 +170,23 @@ cmdselecao  :  'se' AP
                    	 	stack.push(curThread);
                    	 } 
                    	(cmd+) 
-                   	FCH
-                   	{
+                   	FCH{
                    		listaFalse = stack.pop();
+                   	}
+                   )?
+                   {
+                   		
                    		CommandDecisao cmd = new CommandDecisao(_exprDecision, listaTrue, listaFalse);
                    		stack.peek().add(cmd);
                    	}
-                   )?
             ;
             
 cmdrepeticao	:	'enquanto' AP 
+					(
 					ID {_exprDecisionRepeticao = _input.LT(-1).getText();}
 					OPREL {_exprDecisionRepeticao += _input.LT(-1).getText();}
 					(ID | NUMBER) {_exprDecisionRepeticao += _input.LT(-1).getText();}
+					)*
 					FP 
 					ACH {
 						curThread = new ArrayList<AbstractCommand>();
@@ -240,7 +244,7 @@ FCH  : '}'
      ;
 	 
 	 
-OPREL : '>' | '<' | '>=' | '<=' | '==' | '!='
+OPREL : '>' | '<' | '>=' | '<=' | '==' | '!=' | '||' | '&&'
       ;
       
 ID	: [a-z] ([a-z] | [A-Z] | [0-9])*

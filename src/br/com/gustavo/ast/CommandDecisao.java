@@ -6,7 +6,7 @@ public class CommandDecisao extends AbstractCommand {
  
 	private String condition;
 	private ArrayList<AbstractCommand> listaTrue;
-	private ArrayList<AbstractCommand> listaFalse;
+	private ArrayList<AbstractCommand> listaFalse = new ArrayList<AbstractCommand>();
 	
 	public CommandDecisao(String condition, ArrayList<AbstractCommand> lt, ArrayList<AbstractCommand> lf) {
 		this.condition = condition;
@@ -22,7 +22,7 @@ public class CommandDecisao extends AbstractCommand {
 			str.append("	" + cmd.generateJavaCode());
 		}
 		str.append("\n}");
-		if (listaFalse.size() > 0) {
+		if (listaFalse != null && listaFalse.size() > 0) {
 			str.append("\nelse {\n");
 			for (AbstractCommand cmd: listaFalse) {
 				str.append("	"+cmd.generateJavaCode());
