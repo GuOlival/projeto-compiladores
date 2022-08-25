@@ -1,27 +1,37 @@
 programa
 
-  numero num, expoente, i, resultado;
+  numero peso, altura, imc, altura2;
+  texto magreza, normal, sobrepeso, obesidade, obesidadegrave, alturainput, pesoinput;
   
-  i := 2;
-  leia(num);
-  leia(expoente);
-  resultado := num;
+  alturainput := "Entre com a altura";
+  pesoinput := "Entre com o peso";
+  magreza := "Magreza";
+  sobrepeso := "Sobrepeso";
+  obesidade := "Obesidade";
+  obesidadegrave := "Obesidade Grave";
+  normal := "Normal";
   
-  se (expoente == 1) 
-  entao {
-  		resultado := num;
+  escreva(pesoinput);
+  leia(peso);
+  escreva(alturainput);
+  leia(altura);
+  altura2 := altura * altura;
+  imc := peso / altura2;
+  se( imc < 18.5)entao{
+  	escreva(magreza);
   }
-  	
-  se (expoente == 0) 
-  entao {
-  		resultado := 1;
-  		i := i + 1;
+  se( imc >= 18.5 && imc <=24.9)entao{
+  	escreva(normal);
   }
-  
-  enquanto (i <= expoente){
-  		resultado := resultado * num;
-  		i := i+1;
-  	}	
-  escreva(resultado);
+  se( imc > 24.9 && imc <= 29.9)entao{
+  	escreva(sobrepeso);
+  }
+  se( imc > 29.9 && imc <= 39.9)entao{
+  	escreva(obesidade);
+  }
+  se( imc > 39.9)entao{
+  	escreva(obesidadegrave);
+  }
+  escreva(imc);
   
 fimprog;

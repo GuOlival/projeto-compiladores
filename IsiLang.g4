@@ -149,9 +149,19 @@ cmdattrib	:  ID { verificaID(_input.LT(-1).getText());
 			
 			
 cmdselecao  :  'se' AP
+                    
                     ID    { _exprDecision = _input.LT(-1).getText(); }
                     OPREL { _exprDecision += _input.LT(-1).getText(); }
                     (ID | NUMBER) {_exprDecision += _input.LT(-1).getText(); }
+                    (
+                    {_exprDecision += " ";}
+                    OPREL { 
+                    _exprDecision += " ";
+                    _exprDecision += _input.LT(-1).getText(); }
+                    ID    { _exprDecision += _input.LT(-1).getText(); }
+                    OPREL { _exprDecision += _input.LT(-1).getText(); }
+                    (ID | NUMBER) {_exprDecision += _input.LT(-1).getText(); }
+                    )*?
                     FP 
                'entao'  ACH 
                     { curThread = new ArrayList<AbstractCommand>(); 
@@ -253,7 +263,7 @@ ID	: [a-z] ([a-z] | [A-Z] | [0-9])*
 NUMBER	: [0-9]+ ('.' [0-9]+)?
 		;
 		
-TEXT	: '"'([a-z] | [A-Z] | [0-9])*'"'
+TEXT	: '"'([a-z] | [A-Z] | [0-9] | ' ' | '\t' | '\n' | '\r')*'"'
 			;
 		
 WS	: (' ' | '\t' | '\n' | '\r') -> skip;
