@@ -2,45 +2,27 @@ import java.util.Scanner;
 public class MainClass{ 
 public static void main(String args[]){
  Scanner _key = new Scanner(System.in);
-String  pesoinput;
-String  normal;
-String  magreza;
-String  obesidadegrave;
-double  peso;
-double  altura;
-String  sobrepeso;
-double  altura2;
-String  alturainput;
-double  imc;
-String  obesidade;
-alturainput = "Entre com a altura";
-pesoinput = "Entre com o peso";
-magreza = "Magreza";
-sobrepeso = "Sobrepeso";
-obesidade = "Obesidade";
-obesidadegrave = "Obesidade Grave";
-normal = "Normal";
-System.out.println(pesoinput);
-peso= _key.nextDouble();
-System.out.println(alturainput);
-altura= _key.nextDouble();
-altura2 = altura*altura;
-imc = peso/altura2;
-if (imc<18.5) {
-	System.out.println(magreza);
+double  expoente;
+double  resultado;
+double  num;
+double  i;
+String  t1;
+i = 2;
+num= _key.nextDouble();
+expoente= _key.nextDouble();
+resultado = num;
+if (expoente==1) {
+	resultado = num;
 }
-if (imc>=18.5&&imc<=24.9) {
-	System.out.println(normal);
+if (expoente==0) {
+	resultado = 1;	i = i+1;
 }
-if (imc>24.9&&imc<=29.9) {
-	System.out.println(sobrepeso);
+while (i<=expoente) {
+
+ resultado = resultado*num;
+ i = i+1;
 }
-if (imc>29.9&&imc<=39.9) {
-	System.out.println(obesidade);
-}
-if (imc>39.9) {
-	System.out.println(obesidadegrave);
-}
-System.out.println(imc);
+
+System.out.println(resultado);
 }
 }
