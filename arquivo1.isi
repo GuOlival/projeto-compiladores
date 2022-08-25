@@ -1,0 +1,27 @@
+programa
+
+  numero num, expoente, i, resultado;
+  texto t1;
+  i := 2;
+  leia(num);
+  leia(expoente);
+  resultado := num;
+  
+  se (expoente == 1) 
+  entao {
+  		resultado := num;
+  }
+  	
+  se (expoente == 0) 
+  entao {
+  		resultado := 1;
+  		i := i + 1;
+  }
+  
+  enquanto (i <= expoente){
+  		resultado := resultado * num;
+  		i := i+1;
+  	}	
+  escreva(resultado);
+  
+fimprog;
